@@ -1,14 +1,13 @@
 import React from "react";
 
 function ButtonWarn(props) {
-  console.log(props);
   const { label, onClick } = props;
   return (
     <button
       style={{
         backgroundColor: "#af0f0f",
         color: "white",
-        padding: "10px 20px",
+        padding: "10px 15px",
         border: "none",
         borderRadius: "5px",
         cursor: "pointer",

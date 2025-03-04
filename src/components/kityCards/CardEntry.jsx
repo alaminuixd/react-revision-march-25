@@ -1,38 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ContactCard from "./ContactCard";
 import styles from "./CardEntry.module.css";
 
-// cats images
-import cat1 from "./cats/cat-1.jpg";
-import cat2 from "./cats/cat-2.jpg";
-import cat3 from "./cats/cat-3.jpg";
+// import kitty cat card data
+import cardData from "./cardData";
 
 function CardEntry() {
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    setCards((prev) => {
+      return [...prev, ...cardData];
+    });
+  }, []);
+
   return (
     <div className={styles["contacts"]}>
-      <ContactCard
-        imgSrc={cat1}
-        imgAlt={"Cat One"}
-        title={"Mr Pikason"}
-        phone={"48965164"}
-        email={"pikason@gmail.com"}
-      />
-      <ContactCard
-        imgSrc={cat1}
-        imgAlt={"Cat One"}
-        title={"Mr Pikason"}
-        phone={"48965164"}
-        email={"pikason@gmail.com"}
-      />
-      <ContactCard
-        imgSrc={cat1}
-        imgAlt={"Cat One"}
-        title={"Mr Pikason"}
-        phone={"48965164"}
-        email={"pikason@gmail.com"}
-      />
+      {cards.length <= 0 ? (
+        <h2>No items found</h2>
+      ) : (
+        cards.map((card, index) => {
+          // console.log(card);
+          return <ContactCard key={index} {...card} />;
+        })
+      )}
     </div>
   );
 }
 
 export default CardEntry;
+
+/* 
+React
+component folder path: src/components/kityCards
+so kityCards as root
+--root
+  --cats
+    cat-1.jpg
+    cat-2.jpg
+    cat-3.jpg
+    cat-4.jpg
+    cat-5.jpg
+  cardData.js
+  CardEntry.jsx
+*/

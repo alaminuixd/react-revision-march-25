@@ -2,7 +2,7 @@
   margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px; /* Optional: adds space between items */
+  gap: 2rem; /* Optional: adds space between items */
 }
 .contact-card {
   background-color: #151515;
@@ -10,4 +10,11 @@
   padding: 2rem;
   border-radius: 7px;
   text-align: left;
+}
+
+.box {
+  width: 100%;
+  max-width: 250px;
+  height: 200px;
+  background-color: brown;
 }
