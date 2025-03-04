@@ -1,0 +1,35 @@
+.contact-card {
+  background-color: #151515;
+  background-color: #151515;
+  padding: 2rem;
+  border-radius: 7px;
+  text-align: left;
+}
+p {
+  font-size: 0.8rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+.setup {
+  font-size: 1rem;
+  font-weight: 500;
+}
+hr {
+  border: 1px solid #222;
+}
+h3.comments-title {
+  position: relative;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0.3rem 0;
+}
+h3.comments-title::before {
+  content: "";
+  position: absolute;
+  background-color: #03ae3a;
+  width: 3px;
+  height: 71%;
+  top: 4px;
+  left: -8px;
+}

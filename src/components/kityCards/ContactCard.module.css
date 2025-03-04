@@ -1,0 +1,42 @@
+.contact-card {
+  background-color: #151515;
+  background-color: #151515;
+  padding: 2rem;
+  border-radius: 7px;
+  text-align: left;
+}
+.contact-card p {
+  font-size: 0.7rem;
+}
+.contact-card h3 {
+  font-size: 1.3rem;
+}
+.contact-card img {
+  width: 248px;
+  height: 150px;
+  display: block;
+  margin: auto;
+  background-color: #252525;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+.contact-card .infoGroup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+h1,
+h2,
+h3,
+p {
+  padding: 0;
+  margin: 0;
+}
+.contact-card .infoGroup h3,
+.contact-card .infoGroup p {
+  margin: 5px 0;
+}
+
+.cartFooter {
+  margin-top: 1rem;
+}
