@@ -1,0 +1,10 @@
+.boolButton {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  border-radius: 100%;
+  margin-top: 2rem;
+  font-size: 3rem;
+  font-weight: 600;
+  cursor: pointer;
+}

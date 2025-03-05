@@ -1,0 +1,9 @@
+.header {
+  border-bottom: 1px solid #2b2b2b;
+  padding: 2rem;
+}
+.chef-logo {
+  width: 100%;
+  max-width: 250px;
+  filter: invert(100%) brightness(100%) grayscale(100%);
+}
