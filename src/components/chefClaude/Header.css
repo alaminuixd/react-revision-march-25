@@ -1,9 +1,22 @@
 .header {
-  border-bottom: 1px solid #2b2b2b;
-  padding: 2rem;
+  border-bottom: 1px solid #3a3a3a;
+  padding: 1rem 0 2rem;
 }
-.chef-logo {
+.header a {
+  color: inherit;
+}
+.site-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+.site-logo > img {
   width: 100%;
-  max-width: 250px;
+  max-width: 60px;
   filter: invert(100%) brightness(100%) grayscale(100%);
+}
+.site-logo > h1 {
+  font-size: 35px;
+  font-weight: 500;
 }

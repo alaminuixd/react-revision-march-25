@@ -1,13 +1,13 @@
 import React from "react";
 import "./ChefParent.css";
 import Header from "./Header";
-import Main from "./Main";
+import Recipe from "./Recipe";
 
 function ChefParent() {
   return (
     <div className="container">
       <Header />
-      <Main />
+      <Recipe />
     </div>
   );
 }
