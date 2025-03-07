@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { v4 as uuidv4 } from "uuid";
 import "./FormBasic.css";
 
@@ -17,7 +16,6 @@ function FormBasic() {
   const [err, setErr] = React.useState(null);
   const [success, setSuccess] = React.useState(false);
 
-  // hander functions
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewSignup((prevValue) => ({
@@ -26,10 +24,7 @@ function FormBasic() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErr(null); // Reset error before validating
-
+  const validateForm = () => {
     const validations = [
       { field: "firstName", message: "First name is required." },
       { field: "lastName", message: "Last name is required." },
@@ -43,28 +38,33 @@ function FormBasic() {
       },
     ];
 
-    // Check each field for errors
     for (const validation of validations) {
       if (!newSignup[validation.field]) {
-        setErr(validation.message);
-        return;
+        return validation.message;
       }
     }
 
-    // Check if passwords match
     if (newSignup.password !== newSignup.confirmPassword) {
-      setErr("Passwords do not match.");
+      return "Passwords do not match.";
+    }
+
+    return null; // No errors
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErr(null);
+
+    const validationError = validateForm();
+    if (validationError) {
+      setErr(validationError);
       return;
     }
 
-    // If no errors, you can process the form submission here (e.g., save data)
-    setSignup((prev) => {
-      const updatedSignup = { ...newSignup, id: uuidv4() };
-      // console.log(updatedSignup); print: newSignup with uuid
-      return [...prev, updatedSignup];
-    });
-    console.log(signUp);
+    const updatedSignup = { ...newSignup, id: uuidv4() };
+    setSignup((prev) => [...prev, updatedSignup]);
     setSuccess(true);
+
     setNewSignup({
       firstName: "",
       lastName: "",
@@ -80,99 +80,94 @@ function FormBasic() {
     console.log(signUp);
   }, [signUp]);
 
+  const radioOptions = [
+    { value: "unemployed", label: "Unemployed" },
+    { value: "part-time", label: "Part time" },
+    { value: "full-time", label: "Full time" },
+  ];
+
   return (
     <section className="form-basic">
       <h1>Signup Form</h1>
       <form onSubmit={handleSubmit}>
-        {err && <p style={{ color: "red" }}>{err}</p>}{" "}
+        {err && <p style={{ color: "red" }}>{err}</p>}
         {success && (
           <p style={{ color: "#14c04b" }}>Form Submitted Successfully</p>
         )}
-        {/* Display error message */}
-        <label htmlFor="firstName">First Name:</label>
-        <input
-          type="text"
+
+        <InputField
           name="firstName"
-          placeholder="First Name"
+          label="First Name"
           value={newSignup.firstName}
           onChange={handleChange}
         />
-        <label htmlFor="lastName">Last Name:</label>
-        <input
-          type="text"
+        <InputField
           name="lastName"
-          placeholder="Last Name"
+          label="Last Name"
           value={newSignup.lastName}
           onChange={handleChange}
         />
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
+        <InputField
           name="email"
-          placeholder="joe@schmoe.com"
+          label="Email"
           value={newSignup.email}
           onChange={handleChange}
+          type="email"
         />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
+        <InputField
           name="password"
-          placeholder="Create a strong password"
+          label="Password"
           value={newSignup.password}
           onChange={handleChange}
-        />
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input
           type="password"
+        />
+        <InputField
           name="confirmPassword"
-          placeholder="Confirm Password"
+          label="Confirm Password"
           value={newSignup.confirmPassword}
           onChange={handleChange}
+          type="password"
         />
-        <label htmlFor="description">Description:</label>
         <textarea
           name="description"
           placeholder="Your description"
           value={newSignup.description}
           onChange={handleChange}
         ></textarea>
+
         <fieldset>
           <legend>Employment Status:</legend>
-          <label className="radio">
-            <input
-              type="radio"
-              name="employmentStatus"
-              value="unemployed"
-              checked={newSignup.employmentStatus === "unemployed"}
-              onChange={handleChange}
-            />
-            Unemployed
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              name="employmentStatus"
-              value="part-time"
-              checked={newSignup.employmentStatus === "part-time"}
-              onChange={handleChange}
-            />
-            Part time
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              name="employmentStatus"
-              value="full-time"
-              checked={newSignup.employmentStatus === "full-time"}
-              onChange={handleChange}
-            />
-            Full time
-          </label>
+          {radioOptions.map((option) => (
+            <label key={option.value} className="radio">
+              <input
+                type="radio"
+                name="employmentStatus"
+                value={option.value}
+                checked={newSignup.employmentStatus === option.value}
+                onChange={handleChange}
+              />
+              {option.label}
+            </label>
+          ))}
         </fieldset>
+
         <button type="submit">Submit</button>
       </form>
     </section>
   );
 }
+
+const InputField = ({ name, label, value, onChange, type = "text" }) => (
+  <>
+    <label htmlFor={name}>{label}:</label>
+    <input
+      type={type}
+      name={name}
+      placeholder={label}
+      value={value}
+      onChange={onChange}
+    />
+  </>
+);
 
 export default FormBasic;

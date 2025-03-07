@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import "./Recipe.css";
 
+import { FaCirclePlus } from "react-icons/fa6";
+
 function Recipe() {
   const [ingredients, setIngredients] = React.useState([]);
 
   const addIngredient = (formData) => {
     const newIngredient = formData.get("ingredient");
     setIngredients((prevIngredient) => {
+      console.log(prevIngredient);
       return [...prevIngredient, newIngredient];
     });
   };
@@ -26,7 +29,9 @@ function Recipe() {
           aria-label="Add ingredient"
           name="ingredient"
         />
-        <button type="submit">+ Add Ingredient</button>
+        <button type="submit">
+          <FaCirclePlus /> Add Ingredient
+        </button>
       </form>
       <ul className="ingredients">{ingredientElements}</ul>
     </div>

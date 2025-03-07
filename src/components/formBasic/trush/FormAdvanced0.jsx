@@ -17,7 +17,6 @@ function FormBasic() {
   const [err, setErr] = React.useState(null);
   const [success, setSuccess] = React.useState(false);
 
-  // hander functions
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewSignup((prevValue) => ({
@@ -30,37 +29,43 @@ function FormBasic() {
     e.preventDefault();
     setErr(null); // Reset error before validating
 
-    const validations = [
-      { field: "firstName", message: "First name is required." },
-      { field: "lastName", message: "Last name is required." },
-      { field: "email", message: "Email can't be empty." },
-      { field: "password", message: "Password can't be empty." },
-      { field: "confirmPassword", message: "Please confirm your password." },
-      { field: "description", message: "Please add a description." },
-      {
-        field: "employmentStatus",
-        message: "Please select an employment status.",
-      },
-    ];
-
-    // Check each field for errors
-    for (const validation of validations) {
-      if (!newSignup[validation.field]) {
-        setErr(validation.message);
-        return;
-      }
+    if (!newSignup.firstName) {
+      setErr("First name is required.");
+      return;
     }
-
-    // Check if passwords match
+    if (!newSignup.lastName) {
+      setErr("Last name is required.");
+      return;
+    }
+    if (!newSignup.email) {
+      setErr("Email can't be empty");
+      return;
+    }
+    if (!newSignup.password) {
+      setErr("Password can't be empty");
+      return;
+    }
+    if (!newSignup.confirmPassword) {
+      setErr("Please confirm your password");
+      return;
+    }
     if (newSignup.password !== newSignup.confirmPassword) {
-      setErr("Passwords do not match.");
+      setErr("Passwords do not match");
+      return;
+    }
+    if (!newSignup.description) {
+      setErr("Please add a description");
+      return;
+    }
+    if (!newSignup.employmentStatus) {
+      setErr("Please select an employment status");
       return;
     }
 
     // If no errors, you can process the form submission here (e.g., save data)
     setSignup((prev) => {
       const updatedSignup = { ...newSignup, id: uuidv4() };
-      // console.log(updatedSignup); print: newSignup with uuid
+      console.log(updatedSignup);
       return [...prev, updatedSignup];
     });
     console.log(signUp);

@@ -17,6 +17,9 @@
   filter: invert(100%) brightness(100%) grayscale(100%);
 }
 .site-logo > h1 {
-  font-size: 35px;
-  font-weight: 500;
+  font-family: "Arizonia", cursive;
+  /*   font-family: "Kaushan Script", cursive; */
+  font-size: 45px;
+  font-weight: 400;
+  font-style: normal;
 }

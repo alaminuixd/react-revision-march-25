@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-
 import { v4 as uuidv4 } from "uuid";
-import "./FormBasic.css";
+import "./FormRefactor.css";
+import validateForm from "./validateForm";
 
-function FormBasic() {
+function FormRefactor() {
   const [signUp, setSignup] = React.useState([]);
   const [newSignup, setNewSignup] = React.useState({
     firstName: "",
@@ -17,7 +17,7 @@ function FormBasic() {
   const [err, setErr] = React.useState(null);
   const [success, setSuccess] = React.useState(false);
 
-  // hander functions
+  // form handler functoins
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewSignup((prevValue) => ({
@@ -28,43 +28,16 @@ function FormBasic() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErr(null); // Reset error before validating
+    setErr(null);
+    setSuccess(false);
 
-    const validations = [
-      { field: "firstName", message: "First name is required." },
-      { field: "lastName", message: "Last name is required." },
-      { field: "email", message: "Email can't be empty." },
-      { field: "password", message: "Password can't be empty." },
-      { field: "confirmPassword", message: "Please confirm your password." },
-      { field: "description", message: "Please add a description." },
-      {
-        field: "employmentStatus",
-        message: "Please select an employment status.",
-      },
-    ];
+    const isValid = validateForm(newSignup, setErr);
+    if (!isValid) return;
 
-    // Check each field for errors
-    for (const validation of validations) {
-      if (!newSignup[validation.field]) {
-        setErr(validation.message);
-        return;
-      }
-    }
-
-    // Check if passwords match
-    if (newSignup.password !== newSignup.confirmPassword) {
-      setErr("Passwords do not match.");
-      return;
-    }
-
-    // If no errors, you can process the form submission here (e.g., save data)
-    setSignup((prev) => {
-      const updatedSignup = { ...newSignup, id: uuidv4() };
-      // console.log(updatedSignup); print: newSignup with uuid
-      return [...prev, updatedSignup];
-    });
-    console.log(signUp);
+    const updatedSignup = { ...newSignup, id: uuidv4() };
+    setSignup((prev) => [...prev, updatedSignup]);
     setSuccess(true);
+
     setNewSignup({
       firstName: "",
       lastName: "",
@@ -77,18 +50,17 @@ function FormBasic() {
   };
 
   useEffect(() => {
-    console.log(signUp);
-  }, [signUp]);
+    console.log(err);
+  }, [err]);
 
   return (
     <section className="form-basic">
       <h1>Signup Form</h1>
       <form onSubmit={handleSubmit}>
-        {err && <p style={{ color: "red" }}>{err}</p>}{" "}
+        {err && <p style={{ color: "red" }}>{err}</p>}
         {success && (
           <p style={{ color: "#14c04b" }}>Form Submitted Successfully</p>
         )}
-        {/* Display error message */}
         <label htmlFor="firstName">First Name:</label>
         <input
           type="text"
@@ -175,4 +147,4 @@ function FormBasic() {
   );
 }
 
-export default FormBasic;
+export default FormRefactor;
