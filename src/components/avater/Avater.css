@@ -1,0 +1,34 @@
+.avater-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #252525;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+.hero-image {
+  width: 100%;
+  max-width: 100px;
+  margin: 0 auto;
+}
+.info {
+  margin-top: 1rem;
+}
+.info > button {
+  cursor: pointer;
+  background: none; /* Remove default button background */
+  border: none; /* Optional: remove border */
+}
+
+.info img {
+  display: block; /* Avoid extra spacing around images */
+  width: 2rem;
+  margin: auto;
+}
+.info h2 {
+  margin-bottom: 0.5rem;
+}
+.info p {
+  font-size: 0.8rem;
+}
