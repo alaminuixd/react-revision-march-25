@@ -15,15 +15,15 @@ import "./App.css";
 // import Avater from "./components/avater/Avater";
 // import ChefParent from "./components/chefClaude/ChefParent";
 // import Radio0 from "./components/expriment/Radio0";
-// import FormBasic from "./components/formBasic/FormBasic";
-import FormRefactor from "./components/formBasic/formRefactor/FormRefactor";
+// import FormRefactor from "./components/formBasic/formRefactor/FormRefactor";
+import FormBasic from "./components/formBasic/FormBasic";
 
 // data import
 
 function App() {
   return (
     <>
-      <FormRefactor />
+      <FormBasic />
     </>
   );
 }

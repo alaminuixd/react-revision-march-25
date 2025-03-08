@@ -9,6 +9,9 @@
 }
 .form-basic h1 {
   margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
 }
 .form-basic form {
   margin-top: 1rem;
@@ -47,7 +50,8 @@ textarea:focus {
   background-color: #016320;
   cursor: pointer;
 }
-.form-basic input::placeholder {
+.form-basic input::placeholder,
+.form-basic textarea::placeholder {
   color: #343434;
 }
 .form-basic textarea {
@@ -62,11 +66,13 @@ textarea:focus {
   padding: 1rem 0.5rem 1rem;
   border-radius: 0.5rem;
 }
-.form-basic fieldset label.radio {
+.form-basic fieldset label.radio,
+.form-basic fieldset label.checked {
   width: 100%;
 }
 
-.form-basic fieldset input[type="radio"] {
+.form-basic fieldset input[type="radio"],
+.form-basic fieldset input[type="checkbox"] {
   width: 30px;
   padding: 0;
   margin: 0;
@@ -74,4 +80,19 @@ textarea:focus {
 legend {
   color: #14c04b;
   text-align: center;
+}
+.fev-color-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.fev-color-container select {
+  background-color: #161616;
+  color: #fff;
+  padding: 0.5rem 0.7rem;
+  border: none;
+  outline: 1px solid #333;
+}
+.fev-color-container option {
+  border-radius: none;
 }

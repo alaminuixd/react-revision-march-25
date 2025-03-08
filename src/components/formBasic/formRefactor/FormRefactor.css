@@ -9,6 +9,9 @@
 }
 .form-basic h1 {
   margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
 }
 .form-basic form {
   margin-top: 1rem;
