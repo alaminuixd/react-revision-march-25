@@ -6,17 +6,11 @@ import jokesData from "./jokesData";
 function JokeEntry() {
   return (
     <div className="contacts">
-      {jokesData.map((joke, index) => {
-        const { setup, punchline, upVote, isRecent, comments } = joke;
+      {jokesData.map((jokeData, index) => {
+        const { setup, punchline, upVote, isRecent, comments } = jokeData;
         return (
           <article className="contact-card" key={index}>
-            <Joke
-              setup={setup}
-              punchline={punchline}
-              vote={upVote}
-              isRecent={isRecent}
-              comments={comments}
-            />
+            <Joke {...jokeData} />
           </article>
         );
       })}

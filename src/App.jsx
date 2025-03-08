@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-// import JokeEntry from "./components/jokes/JokeEntry";
+import JokeEntry from "./components/jokes/JokeEntry";
 // import CardEntry from "./components/kityCards/CardEntry";
 // import ArrayOne from "./components/array1/ArrayOne";
 // import JsxTest from "./components/array1/JsxTest";
@@ -16,14 +16,14 @@ import "./App.css";
 // import ChefParent from "./components/chefClaude/ChefParent";
 // import Radio0 from "./components/expriment/Radio0";
 // import FormRefactor from "./components/formBasic/formRefactor/FormRefactor";
-import FormBasic from "./components/formBasic/FormBasic";
+// import FormBasic from "./components/formBasic/FormBasic";
 
 // data import
 
 function App() {
   return (
     <>
-      <FormBasic />
+      <JokeEntry />
     </>
   );
 }

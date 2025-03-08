@@ -7,7 +7,10 @@
 }
 p {
   font-size: 0.8rem;
+  margin-top: 0;
+  margin-bottom: 0.3rem;
 }
+
 h3 {
   font-size: 1.2rem;
 }
@@ -17,6 +20,17 @@ h3 {
 }
 hr {
   border: 1px solid #222;
+}
+.joke-comment-wrapper {
+  margin-top: 1rem;
+  background-color: #2d2d2d;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+.joke-comment-wrapper p {
+  font-size: 0.7rem;
+  margin-bottom: 0.3rem;
+  margin-top: 0;
 }
 h3.comments-title {
   position: relative;
@@ -32,4 +46,22 @@ h3.comments-title::before {
   height: 71%;
   top: 4px;
   left: -8px;
+}
+.contact-card > p:last-of-type {
+  margin-bottom: 1rem;
+}
+button.toggle-punch {
+  margin-top: 1rem;
+  width: 100%;
+  border: none;
+  padding: 0.7rem;
+  color: #fff;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+.show {
+  background-color: #4a4a4a;
+}
+.hide {
+  background-color: #2e8b57;
 }
